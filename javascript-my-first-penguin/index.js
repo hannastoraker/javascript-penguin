@@ -123,7 +123,12 @@ module.exports = function (context, req) {
 
 function action(req) {
     if (req.params.query == "command") {
-        return commandReceived(req.body);
+        try {
+           return commandReceived(req.body);
+        }
+        catch(err) {
+            return {};
+        }
     } else if (req.params.query == "info") {
         return infoReceived();
     }
