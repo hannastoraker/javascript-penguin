@@ -124,8 +124,10 @@ module.exports = function (context, req) {
 function action(req) {
     if (req.params.query == "command") {
         return commandReceived(req.body);
+    } else if (req.params.query == "info") {
+        return infoReceived();
     }
-    return infoReceived();
+    return {};
 }
 
 function infoReceived() {
