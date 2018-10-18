@@ -23,18 +23,33 @@ function moveTowardsPoint(body, pointX, pointY) {
 
     if (penguinPositionX < pointX) {
         plannedAction =  MOVE_RIGHT[body.you.direction];
+        plannedAction = SHOOT;
     } else if (penguinPositionX > pointX) {
         plannedAction = MOVE_LEFT[body.you.direction];
+        plannedAction = SHOOT;
     } else if (penguinPositionY < pointY) {
         plannedAction = MOVE_DOWN[body.you.direction];
+        plannedAction = SHOOT;
     } else if (penguinPositionY > pointY) {
         plannedAction = MOVE_UP[body.you.direction];
+        plannedAction = SHOOT;
     }
     if (plannedAction === ADVANCE && wallInFrontOfPenguin(body)) {
         return SHOOT;
     }
     return plannedAction
 }
+
+// function isEnemyInRange(enemies) {
+//   if(enemies.find(enemy => enemy.x == x && enemy.y == y)) {
+//
+//   }
+// }
+//
+// function enemyInRangeOfPenguin(body) {
+//
+// }
+
 
 function doesCellContainWall(walls, x, y) {
     if (walls.find(wall => wall.x == x && wall.y == y)) {
@@ -84,8 +99,8 @@ function action(req) {
 }
 
 function infoReceived() {
-    let penguinName = "Spades pingu";
-    let teamName = "Spades";
+    let penguinName = "Spades";
+    let teamName = "Bouvet";
 
     return {name: penguinName, team: teamName};
 }
