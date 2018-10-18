@@ -23,10 +23,8 @@ function moveTowardsPoint(body, pointX, pointY) {
 
     if (penguinPositionX < pointX) {
         plannedAction =  MOVE_RIGHT[body.you.direction];
-        plannedAction = SHOOT[body.you.direction];
     } else if (penguinPositionX > pointX) {
         plannedAction = MOVE_LEFT[body.you.direction];
-        plannedAction = SHOOT[body.you.direction];
     } else if (penguinPositionY < pointY) {
         plannedAction = MOVE_DOWN[body.you.direction];
     } else if (penguinPositionY > pointY) {
@@ -34,7 +32,10 @@ function moveTowardsPoint(body, pointX, pointY) {
     }
     if (plannedAction === ADVANCE && wallInFrontOfPenguin(body)) {
         return SHOOT;
+    } else {
+      return SHOOT;
     }
+
     return plannedAction
 }
 
